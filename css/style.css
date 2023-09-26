@@ -1,5 +1,39 @@
 body {
     background-color: rgba(10, 10, 25, 255);
     color: darkgrey;
-    font-size: large;
+    font-size:medium;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(30, 30, 30, 255);
+    border-radius: 2vh;
+}
+
+.header-title {
+    margin: 1vh;
+    padding: 0.5vh;
+    color: darkgrey;
+    font-size: larger;
+}
+
+.header-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.button {
+    margin: 1vh;
+    padding: 0.5vh;
+    border-radius: 0.75vh;
+    border: 0.1vh solid darkgrey;
+    background-color: rgba(30, 30, 30, 255);
+    color: darkgrey;
+    font-size: small;
+}
 }
