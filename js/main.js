@@ -13,22 +13,35 @@ class Liste {
     this.name = name;
     this.tasks = tasks
   }
+
+  edit(newName) {
+    this.name = newName || this.name
+  }
+
+  addTask(task) {
+    this.tasks[task.id] = task
+  }
+
+  removeTask(taskId) {
+    this.tasks = this.tasks.slice(taskId)
+  }
 }
 
 class Task {
-  constructor(id, name, date) {
+  constructor(id, name, date, done) {
     this.id = id,
     this.name = name;
     this.date = date;
-    this.done = false;
+    this.done = done || false;
   }
 
   check() {
     this.done = !this.done;
   }
 
-  edit() {
-    
+  edit(newName, newDate) {
+    this.name = newName || this.name
+    this.name = newDate || this.date
   }
 }
 
@@ -99,13 +112,6 @@ function cocherTache() {
   }
 }
 
-function addTask (liste, nom, date, limite) {
-  const nouvelleTache = new Tache(nom, date, limite);
-  liste.taches.push(nouvelleTache);
-  return nouvelleTache;
-
-}
-
 function addList (id, name, tasks){
   let list = new Liste(id, name, tasks);
   Listes[id] = list;
@@ -134,7 +140,7 @@ function addList (id, name, tasks){
 
 function createTask (listeId, name , date, id){
   let task = new Task (id, name, date);
-  Listes[listeId].tasks[id] = task;
+  Listes[listeId].addTask(task);
   let Element = document.createElement('div');
   Element.classList.add('task');
   Element.setAttribute ("id", "task"+id);
