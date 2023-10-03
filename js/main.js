@@ -13,14 +13,26 @@ class Liste {
         this.name = name;
         this.tasks = tasks
     }
+
+    edit(newName) {
+        this.name = newName || this.name
+    }
+
+    addTask(task) {
+        this.tasks[task.id] = task
+    }
+
+    removeTask(taskId) {
+        this.tasks = this.tasks.slice(taskId)
+    }
 }
 
 class Task {
-    constructor(id, name, date) {
+    constructor(id, name, date, done) {
         this.id = id,
-            this.name = name;
+        this.name = name;
         this.date = date;
-        this.done = false;
+        this.done = done || false;
     }
 
     check() {
