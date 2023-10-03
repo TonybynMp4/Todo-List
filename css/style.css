@@ -28,7 +28,7 @@ body {
 }
 
 .button {
-    margin: 1vh;
+    margin: 0.5vh;
     padding: 0.5vh;
     border-radius: 0.75vh;
     border: 0.1vh solid darkgrey;
@@ -37,10 +37,24 @@ body {
     font-size: small;
 }
 
+input {
+    background: none;
+    border: none;
+    color: darkgrey;
+}
+
 .lists-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.list {
+    width: 80%;
+    background-color: rgba(30, 30, 30, 255);
+    margin: 1vh;
+    padding: 1vh;
+    border-radius: 2vh;
 }
 
 .list-tasks {
@@ -49,7 +63,38 @@ body {
 }
 
 .list-header {
+    margin-top: -1vh;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+}
+
+.list-header-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(30, 30, 30, 255);
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1vh;
+}
+
+.form-truc {
+    margin: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
