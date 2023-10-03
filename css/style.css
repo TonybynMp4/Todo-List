@@ -36,4 +36,20 @@ body {
     color: darkgrey;
     font-size: small;
 }
+
+.lists-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
