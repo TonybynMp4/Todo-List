@@ -99,10 +99,10 @@ function createList(id, name, tasks) {
     addListButtonEvents(id)
 }
 
-function createTaskElement(task) {
+function createTaskElement(listId, task) {
     let Element = document.createElement('div');
     Element.classList.add('task');
-    Element.setAttribute("id", "task" + task.id);
+    Element.setAttribute("id", "list"+listId+".task" + task.id);
     Element.innerHTML = `
     <input type="checkbox" name="done"/>
     <input type="text" placeholder="Tâche" class="task-name" value="${task.name}"/>
@@ -132,10 +132,10 @@ function addTaskButtonEvents(listElement, id) {
     })
 }
 
-function createTask(listId, name, date, id) {
-    let task = new Task(id, name, date);
+function createTask(listId, taskName, taskDate, taskId) {
+    let task = new Task(taskId, taskName, taskDate);
     Lists[listId].addTask(task);
     let listElement = document.getElementById("list" + listId);
-    listElement.getElementsByClassName("list-tasks")[0].appendChild(createTaskElement(task));
-    addTaskButtonEvents(listElement, id)
+    listElement.getElementsByClassName("list-tasks")[0].appendChild(createTaskElement(listId, task));
+    addTaskButtonEvents(listElement, taskId)
 }
