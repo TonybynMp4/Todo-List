@@ -1,15 +1,9 @@
 let Lists = []
 
-Lists.updateIds = function() {
-    this.forEach((list, index) => {
-        list.id = index
-    })
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('addList').addEventListener("click", () => {
         const name = prompt("nom")
-        const id = Lists.length
+        const id = Lists.length ? Lists[Lists.length-1].id + 1 : 0
         createList(id, name, [])
     })
 });
@@ -31,12 +25,6 @@ class List {
 
     removeTask(taskId) {
         this.tasks = this.tasks.slice(taskId)
-    }
-
-    updateIds() {
-        this.tasks.forEach((task, index) => {
-            task.id = index
-        })
     }
 }
 
@@ -78,8 +66,9 @@ function createListElement(id, name) {
 function addListButtonEvents(id) {
     document.getElementById("list" + id).getElementsByTagName("button")[0].addEventListener("click", () => {
         const taskName = prompt("task name")
-        const taskDate = prompt("date limite")
-        const newTaskId = Lists[id].tasks.length
+        const taskDate = prompt("date limite (aaaa-mm-jj)")
+        const tasks = Lists[id].tasks
+        const newTaskId = tasks.length ? tasks[tasks.length-1].id + 1 : 0
         if (taskName === null) {
             return
         }
@@ -88,7 +77,6 @@ function addListButtonEvents(id) {
     document.getElementById("list" + id).getElementsByTagName("button")[1].addEventListener("click", () => {
         document.getElementById("list" + id).remove()
         Lists.splice(id, 1)
-        Lists.updateIds()
     })
 }
 
@@ -105,7 +93,7 @@ function createTaskElement(listId, task) {
     Element.setAttribute("id", "list"+listId+".task" + task.id);
     Element.innerHTML = `
     <input type="checkbox" name="done"/>
-    <input type="text" placeholder="Tâche" class="task-name" value="${task.name}"/>
+    <input type="text" placeholder="Tâche" class="task-name" name="task-name" value="${task.name}"/>
     <input type="date" placeholder="00-00-0000" class="task-date" value="${task.date}"/>
     <button type="button" class="delete-button">🗑️</button>
   `;
@@ -115,20 +103,20 @@ function createTaskElement(listId, task) {
 function addTaskButtonEvents(listElement, id) {
     const listId = listElement.id.replace("list", "")
     const list = Lists[listId]
-    const task = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")[id]
-    task.getElementsByTagName("input")[0].addEventListener("change", () => {
+    const tasksElement = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")
+    const taskElement = tasksElement[tasksElement.length-1]
+    taskElement.getElementsByTagName("input")[0].addEventListener("change", () => {
         list.tasks[id].check()
     })
-    task.getElementsByTagName("input")[1].addEventListener("change", (event) => {
+    taskElement.getElementsByTagName("input")[1].addEventListener("change", (event) => {
         list.tasks[id].edit(event.currentTarget.value)
     })
-    task.getElementsByTagName("input")[2].addEventListener("change", (event) => {
+    taskElement.getElementsByTagName("input")[2].addEventListener("change", (event) => {
         list.tasks[id].edit(null, event.currentTarget.value)
     })
-    task.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
-        task.remove()
+    taskElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
+        taskElement.remove()
         list.removeTask(id)
-        list.updateIds()
     })
 }
 
