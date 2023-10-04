@@ -27,7 +27,7 @@ body {
     justify-content: right;
 }
 
-.button {
+button {
     margin: 0.5vh;
     padding: 0.5vh;
     border-radius: 0.75vh;
