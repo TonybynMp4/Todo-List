@@ -27,6 +27,31 @@ body {
     justify-content: right;
 }
 
+dialog {
+    padding: 1vh;
+    border-radius: 0.75vh;
+    border: 0.1vh solid darkgrey;
+    background-color: rgba(30, 30, 30, 180);
+    color: darkgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+dialog input {
+    border: 0.1vh solid darkgrey;
+    border-radius: 0.75vh;
+    padding: 0.5vh;
+    margin: 0.5vh;
+}
+
+dialog .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 button {
     margin: 0.5vh;
     padding: 0.5vh;

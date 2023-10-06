@@ -36,20 +36,13 @@ function createListElement(id, name) {
     return Element
 }
 
-function addListButtonEvents(id) {
-    document.getElementById("list" + id).getElementsByTagName("button")[0].addEventListener("click", () => {
-        const taskName = prompt("task name")
-        const taskDate = prompt("date limite (aaaa-mm-jj)")
-        const tasks = Lists[id].tasks
-        const newTaskId = tasks.length ? tasks[tasks.length-1].id + 1 : 0
-        if (taskName === null) {
-            return
-        }
-        createTask(id, taskName, taskDate, newTaskId)
+function addListButtonEvents(listId) {
+    document.getElementById("list" + listId).getElementsByTagName("button")[0].addEventListener("click", () => {
+        openModal(true, listId)
     })
-    document.getElementById("list" + id).getElementsByTagName("button")[1].addEventListener("click", () => {
-        document.getElementById("list" + id).remove()
-        Lists.splice(id, 1)
+    document.getElementById("list" + listId).getElementsByTagName("button")[1].addEventListener("click", () => {
+        document.getElementById("list" + listId).remove()
+        Lists.splice(listId, 1)
     })
 }
 
