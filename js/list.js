@@ -99,4 +99,11 @@ function createList(id, name, tasks) {
     Lists[id] = list;
     document.getElementById("lists-container").appendChild(createListElement(id, name));
     addListButtonEvents(id)
+    if (tasks.length) {
+        for (let i = 0; i < tasks.length; i++) {
+            const task = tasks[i]
+            const newTaskId = task.id
+            createTask(id, task.name, task.date, newTaskId)
+        }
+    }
 }

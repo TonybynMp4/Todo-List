@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         openExportCSVmodal()
     })
+    document.getElementById('import').addEventListener("click", () => {
+        openImportCSVmodal()
+    })
 });
 
 function openModal(isTask, listId) {

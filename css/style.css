@@ -123,6 +123,10 @@ input {
     text-align: left;
 }
 
+.task-date {
+    font-size: 1vw;
+}
+
 .task-buttons {
     display: inline-flex;
 }
