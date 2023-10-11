@@ -1,7 +1,7 @@
 body {
-    background-color: rgba(10, 10, 25, 255);
+    background-color: rgb(10, 10, 25);
     color: darkgrey;
-    font-size:medium;
+    font-size: 1vw;
 }
 
 .header {
@@ -9,13 +9,13 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(30, 30, 30, 255);
-    border-radius: 2vh;
+    background-color: rgba(30, 30, 30, 0.75);
+    border-radius: 2vw;
 }
 
 .header-title {
-    margin: 1vh;
-    padding: 0.5vh;
+    margin: 0.5vw;
+    padding: 0.5vw;
     color: darkgrey;
     font-size: larger;
 }
@@ -25,13 +25,14 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: right;
+    margin-right: 1vw;
 }
 
 dialog {
-    padding: 1vh;
-    border-radius: 0.75vh;
-    border: 0.1vh solid darkgrey;
-    background-color: rgba(30, 30, 30, 180);
+    padding: 0.5vw;
+    border-radius: 0.75vw;
+    border: 0.1vw solid darkgrey;
+    background-color: rgba(30, 30, 30, 0.75);
     color: darkgrey;
     display: flex;
     flex-direction: column;
@@ -39,10 +40,10 @@ dialog {
 }
 
 dialog input {
-    border: 0.1vh solid darkgrey;
-    border-radius: 0.75vh;
-    padding: 0.5vh;
-    margin: 0.5vh;
+    border: 0.1vw solid darkgrey;
+    border-radius: 0.75vw;
+    padding: 0.5vw;
+    margin: 0.5vw;
 }
 
 dialog .buttons {
@@ -53,13 +54,13 @@ dialog .buttons {
 }
 
 button {
-    margin: 0.5vh;
-    padding: 0.5vh;
-    border-radius: 0.75vh;
-    border: 0.1vh solid darkgrey;
-    background-color: rgba(30, 30, 30, 255);
+    margin: 0.25vw;
+    padding: 0.25vw;
+    border-radius: 0.5vw;
+    border: 0.1vw solid darkgrey;
+    background-color: rgba(30, 30, 30, 0.75);
     color: darkgrey;
-    font-size: small;
+    font-size: 0.75vw;
 }
 
 input {
@@ -75,24 +76,25 @@ input {
 }
 
 .list {
-    width: 80%;
-    background-color: rgba(30, 30, 30, 255);
-    margin: 1vh;
-    padding: 1vh;
-    border-radius: 2vh;
-}
-
-.list-tasks {
-    display: flex;
-    flex-direction: column;
+    width: 90%;
+    background-color: rgba(30, 30, 30, 0.75);
+    margin: 0.5vw;
+    padding: 0.25vw;
+    border-radius: 2vw;
 }
 
 .list-header {
-    margin-top: -1vh;
+    margin-inline: 0.5vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.list-header-title {
+    overflow-wrap: anywhere;
+    width: 75%;
+    margin-left: 0.5vw;
 }
 
 .list-header-buttons {
@@ -100,26 +102,27 @@ input {
     flex-direction: row;
     align-items: center;
     justify-content: right;
+    width: 25%;
 }
 
-.modal {
-    position: fixed;
-    z-index: 1;
-    background-color: rgba(30, 30, 30, 255);
-}
-
-.form-buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 1vh;
-}
-
-.form-truc {
-    margin: 1.5vh;
+.list-tasks {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin: 0.5vw;
+}
+
+.task {
+    display: flex;
+    flex-direction: row;
+    align-items:baseline;
+    justify-content: space-between;
+}
+
+.task-name {
+    width: 90%;
+    text-align: left;
+}
+
+.task-buttons {
+    display: inline-flex;
 }
