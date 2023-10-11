@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('addList').addEventListener("click", () => {
         openModal()
     })
+    document.getElementById('export').addEventListener("click", () => {
+        if (!Lists.length) {
+            alert("Vous n'avez pas de liste a exporter!")
+            return
+        }
+        openExportCSVmodal()
+    })
 });
 
 function openModal(isTask, listId) {
