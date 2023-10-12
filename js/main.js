@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    loadLocalLists()
     document.getElementById('addList').addEventListener("click", () => {
         openModal()
     })

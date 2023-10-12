@@ -70,10 +70,13 @@ function addTaskButtonEvents(listElement, taskId) {
     })
 }
 
-function createTask(listId, taskName, taskDate, taskId) {
+function createTask(listId, taskName, taskDate, taskId, isLocal) {
     let task = new Task(taskId, taskName, taskDate);
     Lists[listId].addTask(task);
     let listElement = document.getElementById("list" + listId);
     listElement.getElementsByClassName("list-tasks")[0].appendChild(createTaskElement(listId, task));
     addTaskButtonEvents(listElement, taskId)
+    if (!isLocal) {
+        saveLists();
+    }
 }

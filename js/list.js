@@ -80,6 +80,7 @@ function addListButtonEvents(listId) {
         event.preventDefault()
         titleElement.setAttribute("contenteditable", "false")
         Lists[listId].edit(titleElement.innerText)
+        saveLists();
     })
     titleElement.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
@@ -91,10 +92,11 @@ function addListButtonEvents(listId) {
     listElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
         document.getElementById("list" + listId).remove()
         Lists.splice(listId, 1)
+        saveLists();
     })
 }
 
-function createList(id, name, tasks) {
+function createList(id, name, tasks, isLocal) {
     let list = new List(id, name, tasks);
     Lists[id] = list;
     document.getElementById("lists-container").appendChild(createListElement(id, name));
@@ -103,7 +105,10 @@ function createList(id, name, tasks) {
         for (let i = 0; i < tasks.length; i++) {
             const task = tasks[i]
             const newTaskId = task.id
-            createTask(id, task.name, task.date, newTaskId)
+            createTask(id, task.name, task.date, newTaskId, isLocal)
         }
+    }
+    if (!isLocal) {
+        saveLists();
     }
 }
