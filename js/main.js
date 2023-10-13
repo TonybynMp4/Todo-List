@@ -1,7 +1,6 @@
 let filterState = 0
 
 document.addEventListener('DOMContentLoaded', () => {
-document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('addList').addEventListener("click", () => {
         openModal(false, null)
     })
@@ -37,7 +36,7 @@ function filterTasks(filterState) {
         filterListTasks(tasks, filterState)
     }
 }
-  
+
 // créer puis ouvre le menu pour ajouter une liste/tâche
 function openModal(isTask, listId) {
     const elem = document.createElement("dialog")
