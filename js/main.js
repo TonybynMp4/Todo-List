@@ -1,17 +1,18 @@
 let filterState = 0
 
 document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('addList').addEventListener("click", () => {
         openModal(false, null)
     })
-    document.getElementById('export').addEventListener("click", () => {
+    document.getElementById('export').addEventListener("click", () => {//exporteren CSV
         if (!Lists.length) {
             alert("Vous n'avez pas de liste a exporter!")
             return
         }
         openExportCSVmodal()
     })
-    document.getElementById('import').addEventListener("click", () => {
+    document.getElementById('import').addEventListener("click", () => {//importer du CSV
         openImportCSVmodal()
     })
     // filtre les taches de toutes les listes entre "toutes", "non complétées" et "complétées"
@@ -36,7 +37,8 @@ function filterTasks(filterState) {
         filterListTasks(tasks, filterState)
     }
 }
-
+  
+// créer puis ouvre le menu pour ajouter une liste/tâche
 function openModal(isTask, listId) {
     const elem = document.createElement("dialog")
     elem.innerHTML = `

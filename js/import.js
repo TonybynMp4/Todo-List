@@ -1,4 +1,4 @@
-function openImportCSVmodal() {
+function openImportCSVmodal() { //fonction qui permet d'importer du CSV dans le dom
     const elem = document.createElement("dialog")
     elem.innerHTML = `
         <form method="dialog">
