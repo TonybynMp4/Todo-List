@@ -1,4 +1,4 @@
-class Task {
+class Task { // permet de donée les paramètre d'une tâche 
     constructor(id, name, date, done) {
         this.id = id,
         this.name = name;
@@ -6,21 +6,21 @@ class Task {
         this.done = done || false;
     }
 
-    check() {
+    check() { // permet de cocher si une tâche est accomplis ou non 
         this.done = !this.done;
     }
 
-    edit(newName, newDate) {
+    edit(newName, newDate) { // permet d'editer une tâche (nom et date)
         this.name = newName || this.name;
         this.date = newDate || this.date;
     }
 }
 
-function createTaskElement(listId, task) {
+function createTaskElement(listId, task) { // permet de crée une tâche 
     let Element = document.createElement('div');
     Element.classList.add('task');
-    Element.setAttribute("id", "list"+listId+".task" + task.id);
-    Element.innerHTML = `
+    Element.setAttribute("id", "list"+listId+".task" + task.id);//permet de mettre dans le HTML l'attribut id a la tâche et de lui donner une valeur
+    Element.innerHTML = ` 
         <input type="checkbox" name="done"/>
         <p class="task-name">${task.name}</p>
         <input type="date" placeholder="00-00-0000" class="task-date" value="${task.date}"/>
@@ -28,22 +28,22 @@ function createTaskElement(listId, task) {
             <button type="button" class="edit-button">✏️</button>
             <button type="button" class="delete-button">🗑️</button>
         </div>
-    `;
+    `;// rajoute le code nécéssaire pour chaque nouvelle tâche
     return Element
 }
 
-function addTaskButtonEvents(listElement, taskId) {
+function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour dire si la tâche est faite ou non 
     const listId = listElement.id.replace("list", "")
     const list = Lists[listId]
-    const tasksElement = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")
+    const tasksElement = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")// sélectionne la tâche dans le DOM
     const taskElement = tasksElement[tasksElement.length-1]
     const taskNameElement = taskElement.getElementsByTagName("p")[0]
 
     taskElement.getElementsByTagName("input")[0].addEventListener("change", () => {
-        list.tasks[taskId].check()
+        list.tasks[taskId].check()// cocher si la tâche est fini ou non 
     })
     taskElement.getElementsByTagName("input")[1].addEventListener("change", (e) => {
-        list.tasks[taskId].edit(null, e.currentTarget.value)
+        list.tasks[taskId].edit(null, e.currentTarget.value)// permet de modifier la date 
     })
     taskElement.getElementsByClassName("edit-button")[0].addEventListener("click", (e) => {
         e.preventDefault()
@@ -67,9 +67,9 @@ function addTaskButtonEvents(listElement, taskId) {
     taskElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
         taskElement.remove()
         list.removeTask(taskId)
-    })
+    })// permet de supprimer une tâche 
 }
-
+// permet de crée une tâche
 function createTask(listId, taskName, taskDate, taskId, isLocal) {
     let task = new Task(taskId, taskName, taskDate);
     Lists[listId].addTask(task);

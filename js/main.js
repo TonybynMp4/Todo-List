@@ -1,21 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalLists()
+document.addEventListener('DOMContentLoaded', () => {// créé une liste 
+   loadLocalLists()
     document.getElementById('addList').addEventListener("click", () => {
         openModal()
     })
-    document.getElementById('export').addEventListener("click", () => {
+    document.getElementById('export').addEventListener("click", () => {//exporteren CSV
         if (!Lists.length) {
             alert("Vous n'avez pas de liste a exporter!")
             return
         }
         openExportCSVmodal()
     })
-    document.getElementById('import').addEventListener("click", () => {
+    document.getElementById('import').addEventListener("click", () => {//importer du CSV
         openImportCSVmodal()
     })
 });
 
-function openModal(isTask, listId) {
+function openModal(isTask, listId) {// crée le menu pour ajouter les tâches 
     const elem = document.createElement("dialog")
     elem.innerHTML = `
         <form method="dialog">

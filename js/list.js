@@ -1,4 +1,4 @@
-let Lists = []
+let Lists = [] // crée les attribut d'une liste 
 class List {
     constructor(id, name, tasks) {
         this.id = id
@@ -6,20 +6,20 @@ class List {
         this.tasks = tasks
     }
 
-    edit(newName) {
+    edit(newName) { // modifier le nom d'une lilste
         this.name = newName || this.name
     }
 
-    addTask(task) {
+    addTask(task) { // ajouter une tâche a une liste 
         this.tasks[task.id] = task
     }
 
-    removeTask(taskId) {
+    removeTask(taskId) { // permet de changer l'amplacement d'un tâche dans une liste 
         this.tasks = this.tasks.slice(taskId)
     }
 }
 
-function createListElement(id, name) {
+function createListElement(id, name) {// crée la liste dans le dom
     let Element = document.createElement("div");
     const listId = "list" + id
     Element.classList.add("list");
