@@ -1,7 +1,8 @@
+let filterState = 0
+
 document.addEventListener('DOMContentLoaded', () => {
-    loadLocalLists()
     document.getElementById('addList').addEventListener("click", () => {
-        openModal()
+        openModal(false, null)
     })
     document.getElementById('export').addEventListener("click", () => {
         if (!Lists.length) {
@@ -13,7 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('import').addEventListener("click", () => {
         openImportCSVmodal()
     })
+    // filtre les taches de toutes les listes entre "toutes", "non complétées" et "complétées"
+    document.getElementById('filter').addEventListener("click", () => {
+        filterTasks(filterState)
+        filterState = (filterState + 1) % 3
+    })
+    // Switch entre dark et light mode
+    document.getElementById('theme').addEventListener("click", () => {
+        const currentTheme = localStorage.colorTheme || document.documentElement.getAttribute('data-theme');
+        const switchToTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', switchToTheme);
+        document.getElementById('theme').innerText = switchToTheme === 'dark' ? '🌙' : '☀️';
+        saveTheme()
+    })
 });
+
+function filterTasks(filterState) {
+    for (let i = 0; i < Lists.length; i++) {
+        const list = Lists[i]
+        const tasks = document.getElementById("list" + list.id).getElementsByClassName("list-tasks")[0].getElementsByClassName("task")
+        filterListTasks(tasks, filterState)
+    }
+}
 
 function openModal(isTask, listId) {
     const elem = document.createElement("dialog")

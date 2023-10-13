@@ -2,7 +2,7 @@ class Task {
     constructor(id, name, date, done) {
         this.id = id,
         this.name = name;
-        this.date = date && date.replace(/\//g, "-");
+        this.date = date && date.replace(/\//g, "-") || '';
         this.done = done || false;
     }
 
@@ -41,9 +41,11 @@ function addTaskButtonEvents(listElement, taskId) {
 
     taskElement.getElementsByTagName("input")[0].addEventListener("change", () => {
         list.tasks[taskId].check()
+        saveLists();
     })
     taskElement.getElementsByTagName("input")[1].addEventListener("change", (e) => {
         list.tasks[taskId].edit(null, e.currentTarget.value)
+        saveLists();
     })
     taskElement.getElementsByClassName("edit-button")[0].addEventListener("click", (e) => {
         e.preventDefault()
@@ -56,6 +58,7 @@ function addTaskButtonEvents(listElement, taskId) {
         e.preventDefault()
         taskNameElement.setAttribute("contenteditable", "false")
         Lists[listId].tasks[taskId].edit(taskNameElement.innerText, null)
+        saveLists();
     })
     taskNameElement.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
@@ -67,6 +70,7 @@ function addTaskButtonEvents(listElement, taskId) {
     taskElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
         taskElement.remove()
         list.removeTask(taskId)
+        saveLists();
     })
 }
 
