@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 
+// Filtre liste par liste
 function filterTasks(filterState) {
     for (let i = 0; i < Lists.length; i++) {
         const list = Lists[i]
@@ -51,7 +52,6 @@ function openModal(isTask, listId) {
         </form>
     `
     document.body.appendChild(elem)
-    elem.showModal()
     elem.addEventListener('close', () => {
         elem.remove()
     })
@@ -75,4 +75,7 @@ function openModal(isTask, listId) {
             createList(newListId, modalData.name, [])
         }
     })
+
+    // Ouvre le menu
+    elem.showModal()
 }
