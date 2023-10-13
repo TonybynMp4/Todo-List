@@ -1,6 +1,54 @@
+:root[data-theme="light"] {
+    --background-color: white;
+    --text-color: black;
+    --header-bg-color: rgba(160, 160, 160, 0.75);
+    --dialog-bg-color: white;
+    --dialog-border-color: grey;
+    --button-bg-color: lightgrey;
+    --list-bg-color: white;
+    --list-border-color: grey;
+  }
+
+:root[data-theme="dark"] {
+    --background-color: rgb(10, 10, 25);
+    --text-color: darkgrey;
+    --header-bg-color: rgba(30, 30, 30, 0.75);
+    --dialog-bg-color: rgba(30, 30, 30, 0.75);
+    --dialog-border-color: darkgrey;
+    --button-bg-color: rgba(30, 30, 30, 0.75);
+    --list-bg-color: rgba(30, 30, 30, 0.75);
+    --list-border-color: darkgrey;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: white;
+        --text-color: black;
+        --header-bg-color: rgba(160, 160, 160, 0.75);
+        --dialog-bg-color: white;
+        --dialog-border-color: grey;
+        --button-bg-color: lightgrey;
+        --list-bg-color: white;
+        --list-border-color: grey;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: rgb(10, 10, 25);
+        --text-color: darkgrey;
+        --header-bg-color: rgba(30, 30, 30, 0.75);
+        --dialog-bg-color: rgba(30, 30, 30, 0.75);
+        --dialog-border-color: darkgrey;
+        --button-bg-color: rgba(30, 30, 30, 0.75);
+        --list-bg-color: rgba(30, 30, 30, 0.75);
+        --list-border-color: darkgrey;
+    }
+}
+
 body {
-    background-color: rgb(10, 10, 25);
-    color: darkgrey;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-size: 1vw;
 }
 
@@ -9,14 +57,14 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(30, 30, 30, 0.75);
+    background-color: var(--header-bg-color);
     border-radius: 2vw;
 }
 
 .header-title {
     margin: 0.5vw;
     padding: 0.5vw;
-    color: darkgrey;
+    color: var(--text-color);
     font-size: larger;
 }
 
@@ -31,16 +79,16 @@ body {
 dialog {
     padding: 0.5vw;
     border-radius: 0.75vw;
-    border: 0.1vw solid darkgrey;
-    background-color: rgba(30, 30, 30, 0.75);
-    color: darkgrey;
+    border: 0.1vw solid var(--dialog-border-color);
+    background-color: var(--dialog-bg-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 dialog input {
-    border: 0.1vw solid darkgrey;
+    border: 0.1vw solid var(--dialog-border-color);
     border-radius: 0.75vw;
     padding: 0.5vw;
     margin: 0.5vw;
@@ -57,16 +105,16 @@ button {
     margin: 0.25vw;
     padding: 0.25vw;
     border-radius: 0.5vw;
-    border: 0.1vw solid darkgrey;
-    background-color: rgba(30, 30, 30, 0.75);
-    color: darkgrey;
+    border: 0.1vw solid var(--dialog-border-color);
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
     font-size: 0.75vw;
 }
 
 input {
     background: none;
     border: none;
-    color: darkgrey;
+    color: var(--text-color);
 }
 
 .lists-container {
@@ -77,10 +125,11 @@ input {
 
 .list {
     width: 90%;
-    background-color: rgba(30, 30, 30, 0.75);
+    background-color: var(--list-bg-color);
     margin: 0.5vw;
     padding: 0.25vw;
     border-radius: 2vw;
+    border: 0.1vw solid var(--list-border-color);
 }
 
 .list-header {

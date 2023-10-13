@@ -2,7 +2,7 @@ class Task { // permet de donée les paramètre d'une tâche
     constructor(id, name, date, done) {
         this.id = id,
         this.name = name;
-        this.date = date && date.replace(/\//g, "-");
+        this.date = date && date.replace(/\//g, "-") || '';
         this.done = done || false;
     }
 
@@ -39,11 +39,15 @@ function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour di
     const taskElement = tasksElement[tasksElement.length-1]
     const taskNameElement = taskElement.getElementsByTagName("p")[0]
 
+    // Coche la tâche
     taskElement.getElementsByTagName("input")[0].addEventListener("change", () => {
-        list.tasks[taskId].check()// cocher si la tâche est fini ou non 
+        list.tasks[taskId].check()
+        saveLists();
     })
+    // Modifie la date de la tâche
     taskElement.getElementsByTagName("input")[1].addEventListener("change", (e) => {
-        list.tasks[taskId].edit(null, e.currentTarget.value)// permet de modifier la date 
+        list.tasks[taskId].edit(null, e.currentTarget.value)
+        saveLists();
     })
     taskElement.getElementsByClassName("edit-button")[0].addEventListener("click", (e) => {
         e.preventDefault()
@@ -56,6 +60,7 @@ function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour di
         e.preventDefault()
         taskNameElement.setAttribute("contenteditable", "false")
         Lists[listId].tasks[taskId].edit(taskNameElement.innerText, null)
+        saveLists();
     })
     taskNameElement.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
@@ -64,12 +69,15 @@ function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour di
         }
     })
 
+    // Supprime la tâche
     taskElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
         taskElement.remove()
         list.removeTask(taskId)
-    })// permet de supprimer une tâche 
+        saveLists();
+    })
 }
-// permet de crée une tâche
+
+// permet de créer une tâche
 function createTask(listId, taskName, taskDate, taskId, isLocal) {
     let task = new Task(taskId, taskName, taskDate);
     Lists[listId].addTask(task);

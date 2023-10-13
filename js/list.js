@@ -28,7 +28,6 @@ function createListElement(id, name) {// crée la liste dans le dom
         <div class="list-header">
             <h2 class="list-header-title">${name}</h2>
             <div class="list-header-buttons">
-                <button type="button" class="filter-button">Filtrer</button>
                 <button type="button" class="addTask-button">Ajouter Tache</button>
                 <button type="button" class="edit-button">Modifier Titre</button>
                 <button type="button" class="delete-button">Supprimer Liste</button>
@@ -39,7 +38,7 @@ function createListElement(id, name) {// crée la liste dans le dom
     return Element
 }
 
-function filterTasks(tasks, filterState) {
+function filterListTasks(tasks, filterState) {
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i]
         const checkedTask = task.getElementsByTagName("input")[0].checked
@@ -55,19 +54,12 @@ function filterTasks(tasks, filterState) {
 }
 
 function addListButtonEvents(listId) {
-    let filterState = 0
     const listElement = document.getElementById("list" + listId)
     const titleElement = listElement.getElementsByTagName("h2")[0]
 
     listElement.getElementsByClassName("addTask-button")[0].addEventListener("click", (e) => {
         e.preventDefault()
         openModal(true, listId)
-    })
-    listElement.getElementsByClassName("filter-button")[0].addEventListener("click", (e) => {
-        e.preventDefault()
-        const tasks = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")
-        filterTasks(tasks, filterState)
-        filterState = (filterState + 1) % 3
     })
     listElement.getElementsByClassName("edit-button")[0].addEventListener("click", (e) => {
         e.preventDefault()
