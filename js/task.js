@@ -1,4 +1,4 @@
-class Task { // permet de donée les paramètre d'une tâche 
+class Task { // permet de donée les paramètre d'une tâche
     constructor(id, name, date, done) {
         this.id = id,
         this.name = name;
@@ -6,7 +6,7 @@ class Task { // permet de donée les paramètre d'une tâche
         this.done = done || false;
     }
 
-    check() { // permet de cocher si une tâche est accomplis ou non 
+    check() { // permet de cocher si une tâche est accomplis ou non
         this.done = !this.done;
     }
 
@@ -16,11 +16,11 @@ class Task { // permet de donée les paramètre d'une tâche
     }
 }
 
-function createTaskElement(listId, task) { // permet de crée une tâche 
+function createTaskElement(listId, task) { // permet de crée une tâche
     let Element = document.createElement('div');
     Element.classList.add('task');
     Element.setAttribute("id", "list"+listId+".task" + task.id);//permet de mettre dans le HTML l'attribut id a la tâche et de lui donner une valeur
-    Element.innerHTML = ` 
+    Element.innerHTML = `
         <input type="checkbox" name="done"/>
         <p class="task-name">${task.name}</p>
         <input type="date" placeholder="00-00-0000" class="task-date" value="${task.date}"/>
@@ -32,7 +32,7 @@ function createTaskElement(listId, task) { // permet de crée une tâche
     return Element
 }
 
-function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour dire si la tâche est faite ou non 
+function addTaskButtonEvents(listElement, taskId) { // ajoute une bouton pour dire si la tâche est faite ou non
     const listId = listElement.id.replace("list", "")
     const list = Lists[listId]
     const tasksElement = listElement.getElementsByClassName("list-tasks")[0].getElementsByClassName("task")// sélectionne la tâche dans le DOM

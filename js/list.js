@@ -1,4 +1,4 @@
-let Lists = [] // crée les attribut d'une liste 
+let Lists = [] // crée les attribut d'une liste
 class List {
     constructor(id, name, tasks) {
         this.id = id
@@ -10,11 +10,11 @@ class List {
         this.name = newName || this.name
     }
 
-    addTask(task) { // ajouter une tâche a une liste 
+    addTask(task) { // ajouter une tâche a une liste
         this.tasks[task.id] = task
     }
 
-    removeTask(taskId) { // permet de changer l'amplacement d'un tâche dans une liste 
+    removeTask(taskId) { // permet de changer l'amplacement d'un tâche dans une liste
         this.tasks = this.tasks.slice(taskId)
     }
 }
@@ -82,7 +82,11 @@ function addListButtonEvents(listId) {
     })
 
     listElement.getElementsByClassName("delete-button")[0].addEventListener("click", () => {
-        document.getElementById("list" + listId).remove()
+        const listElem = document.getElementById("list" + listId)
+        listElem.setAttribute("remove", "")
+        listElem.addEventListener("animationend", () => {
+            listElem.remove()
+        }, {once: true})
         Lists.splice(listId, 1)
         saveLists();
     })

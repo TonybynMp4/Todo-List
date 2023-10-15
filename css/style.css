@@ -87,6 +87,18 @@ dialog {
     align-items: center;
 }
 
+dialog[open] {
+    animation: dialog-open 750ms forwards;
+}
+
+dialog::backdrop {
+    background-color: rgba(10, 10, 10, 0.5);
+}
+
+dialog[open]::backdrop {
+    animation: backdrop-open 750ms forwards;
+}
+
 dialog input {
     border: 0.1vw solid var(--dialog-border-color);
     border-radius: 0.75vw;
@@ -130,6 +142,10 @@ input {
     padding: 0.25vw;
     border-radius: 2vw;
     border: 0.1vw solid var(--list-border-color);
+}
+
+.list[remove] {
+    animation: slide-right 750ms;
 }
 
 .list-header {
@@ -178,4 +194,33 @@ input {
 
 .task-buttons {
     display: inline-flex;
+}
+
+@keyframes dialog-open {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes backdrop-open {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }

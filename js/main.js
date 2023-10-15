@@ -51,31 +51,36 @@ function openModal(isTask, listId) {
             </div>
         </form>
     `
-    document.body.appendChild(elem)
+    document.body.appendChild(elem);
     elem.addEventListener('close', () => {
-        elem.remove()
-    })
+        elem.remove();
+    });
     elem.addEventListener('reset', () => {
-        elem.close()
-    })
+        elem.close();
+    });
+    elem.addEventListener('click', (e) => {
+        if (e.target.nodeName === "DIALOG") {
+            elem.close();
+        };
+    });
     elem.addEventListener('submit', (event) => {
-        event.preventDefault()
-        let modalData = {}
+        event.preventDefault();
+        let modalData = {};
         if (isTask) {
-            modalData.date = elem.getElementsByClassName("modal-date")[0].value
-        }
-        modalData.name = elem.getElementsByClassName("modal-name")[0].value
-        elem.close()
+            modalData.date = elem.getElementsByClassName("modal-date")[0].value;
+        };
+        modalData.name = elem.getElementsByClassName("modal-name")[0].value;
+        elem.close();
         if (isTask) {
-            const tasks = Lists[listId].tasks
-            const newTaskId = tasks.length ? tasks[tasks.length-1].id + 1 : 0
-            createTask(listId, modalData.name, modalData.date, newTaskId)
+            const tasks = Lists[listId].tasks;
+            const newTaskId = tasks.length ? tasks[tasks.length-1].id + 1 : 0;
+            createTask(listId, modalData.name, modalData.date, newTaskId);
         } else {
-            const newListId = Lists.length ? Lists[Lists.length-1].id + 1 : 0
-            createList(newListId, modalData.name, [])
-        }
-    })
+            const newListId = Lists.length ? Lists[Lists.length-1].id + 1 : 0;
+            createList(newListId, modalData.name, []);
+        };
+    });
 
     // Ouvre le menu
-    elem.showModal()
-}
+    elem.showModal();
+};
