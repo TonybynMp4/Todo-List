@@ -17,7 +17,7 @@
     --dialog-border-color: darkgrey;
     --button-bg-color: rgba(30, 30, 30, 0.75);
     --list-bg-color: rgba(30, 30, 30, 0.75);
-    --list-border-color: darkgrey;
+    --list-border-color: rgba(120, 120, 120, 0.5);
 }
 
 @media (prefers-color-scheme: light) {
