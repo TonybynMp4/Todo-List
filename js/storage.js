@@ -12,22 +12,21 @@ function saveLists() {
     if (!Lists.length) {
         localStorage.removeItem("Lists");
         return;
-    }
+    };
     localStorage.setItem("Lists", JSON.stringify(Lists));
 };
 
 // Charge les listes sauvegardées dans le local storage
 function loadLocalLists() {
     const localLists = localStorage.getItem("Lists");
-    if (localLists) {
-        const lists = [...JSON.parse(localLists)];
-        if (!lists.length || lists[0] === null) return;
-        for (let i = 0; i < lists.length; i++) {
-            const list = lists[i];
-            createList(list.id, list.name, list.tasks, true);
-        }
-    }
-}
+    if (!localLists) return;
+    const lists = [...JSON.parse(localLists)];
+    if (!lists.length || lists[0] === null) return;
+    for (let i = 0; i < lists.length; i++) {
+        const list = lists[i];
+        createList(list.id, list.name, list.tasks, true);
+    };
+};
 
 function saveTheme() {
     localStorage.setItem("colorTheme", document.documentElement.getAttribute('data-theme'));
