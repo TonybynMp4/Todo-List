@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Sauvegarde les listes dans le local storage
 function saveLists() {
+    if (!Lists.length) {
+        localStorage.removeItem("Lists");
+        return;
+    }
     localStorage.setItem("Lists", JSON.stringify(Lists));
 };
 
