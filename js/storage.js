@@ -21,6 +21,7 @@ function loadLocalLists() {
     const localLists = localStorage.getItem("Lists");
     if (localLists) {
         const lists = [...JSON.parse(localLists)];
+        if (!lists.length || lists[0] === null) return;
         for (let i = 0; i < lists.length; i++) {
             const list = lists[i];
             createList(list.id, list.name, list.tasks, true);

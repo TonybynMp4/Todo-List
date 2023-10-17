@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Filtre liste par liste
 function filterTasks(filterState) {
+    if (!Lists.length) return;
     for (let i = 0; i < Lists.length; i++) {
         const list = Lists[i];
         const tasks = document.getElementById("list" + list.id).getElementsByClassName("list-tasks")[0].getElementsByClassName("task");
