@@ -79,7 +79,7 @@ function addListButtonEvents(listId) {
         titleElement.setAttribute("contenteditable", "false");
         Lists[listId].edit(titleElement.innerText);
         saveLists();
-    })
+    });
     titleElement.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
             event.preventDefault();

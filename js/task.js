@@ -66,7 +66,7 @@ function addTaskButtonEvents(listElement, taskId) {
         taskNameElement.setAttribute("contenteditable", "false");
         Lists[listId].tasks[taskId].edit(taskNameElement.innerText, null);
         saveLists();
-    })
+    });
     taskNameElement.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -80,7 +80,7 @@ function addTaskButtonEvents(listElement, taskId) {
         list.removeTask(taskId);
         saveLists();
     });
-}
+};
 
 // Crée une tâche et l'ajoute à la liste
 function createTask(listId, taskName, taskDate, taskId, isLocal) {

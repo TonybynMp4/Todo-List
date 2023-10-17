@@ -42,9 +42,9 @@ function openImportCSVmodal() {
                 return;
             };
             for (let i = 0; i < lists.length; i++) {
-                const list = lists[i]
-                const newListId = Lists.length ? Lists[Lists.length-1].id + 1 : 0
-                createList(newListId, list.name, list.tasks)
+                const list = lists[i];
+                const newListId = Lists.length ? Lists[Lists.length-1].id + 1 : 0;
+                createList(newListId, list.name, list.tasks);
             };
         };
         reader.readAsText(csvFile);
