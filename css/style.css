@@ -293,7 +293,7 @@ h1 {
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-size: 1vw;
+    font-size: max(10px, 1vw);
 }
 
 .header {
@@ -364,7 +364,7 @@ button {
     border: 0.1vw solid var(--dialog-border-color);
     background-color: var(--button-bg-color);
     color: var(--text-color);
-    font-size: 0.75vw;
+    font-size: max(7.5px, 0.75vw);
 }
 
 input {
@@ -433,7 +433,7 @@ input {
 }
 
 .task-date {
-    font-size: 1vw;
+    font-size: max(10px, 1vw);
 }
 
 .task-buttons {
